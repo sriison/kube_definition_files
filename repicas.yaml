@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicationController
+metadata:
+  name: myapp-rd
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  template:
+    metadata:
+      name: nginx
+      label:
+        name: nginx
+    spec:
+      container:
+        - name: test
+          image: nginx
+          ports:
+            - containerPort: 80
+replicas: 3
+selector:
+   matchLables:
+      type: frontend

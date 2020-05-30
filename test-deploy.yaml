@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-deployment
+  labels:
+    name: sample-deployment
+    type: frontend
+spec:
+  template:
+    metadata:
+      name: mywebsite
+      labels:
+        name: mywebsite
+        type: frontend
+    spec:
+      containers:
+        - name: test
+          image: sriison/website
+          ports:
+            - containerPort: 80
+
+  replicas: 3
+  selector:
+    matchLabels:
+      type: frontend
